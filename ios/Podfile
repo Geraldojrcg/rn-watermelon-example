@@ -6,6 +6,12 @@ platform :ios, '11.0'
 target 'wmlExample' do
   config = use_native_modules!
 
+  # NOTE: Do not remove, needed to keep WatermelonDB compiling:
+  pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi', :modular_headers => true
+
+  # NOTE: This is required as of v0.23
+  pod 'simdjson', path: '../node_modules/@nozbe/simdjson'
+
   use_react_native!(
     :path => config[:reactNativePath],
     # to enable hermes on iOS, change `false` to `true` and then install pods
@@ -19,7 +25,7 @@ target 'wmlExample' do
 
   # Enables Flipper.
   #
-  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # Note that´ if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
   use_flipper!()
 

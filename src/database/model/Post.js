@@ -1,5 +1,5 @@
 import {Model, tableSchema} from '@nozbe/watermelondb';
-import {field, text, children} from '@nozbe/watermelondb/decorators';
+import {text, children, readonly, date} from '@nozbe/watermelondb/decorators';
 
 export const PostSchema = tableSchema({
   name: 'posts',
@@ -7,7 +7,8 @@ export const PostSchema = tableSchema({
     {name: 'title', type: 'string'},
     {name: 'subtitle', type: 'string', isOptional: true},
     {name: 'body', type: 'string'},
-    {name: 'is_pinned', type: 'boolean'},
+    {name: 'created_at', type: 'number'},
+    {name: 'updated_at', type: 'number'},
   ],
 });
 
@@ -20,6 +21,7 @@ export class Post extends Model {
   @text('title') title;
   @text('subtitle') subtitle;
   @text('body') body;
-  @field('is_pinned') isPinned;
   @children('comments') comments;
+  @readonly @date('created_at') createdAt;
+  @readonly @date('updated_at') updatedAt;
 }

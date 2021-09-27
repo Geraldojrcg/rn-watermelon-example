@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   input: {
+    height: 50,
     borderWidth: 1,
   },
   button: {

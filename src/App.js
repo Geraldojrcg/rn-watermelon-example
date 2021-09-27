@@ -8,6 +8,7 @@ import PostListScreen from './screens/PostListScreen';
 import CreatePostScreen from './screens/CreatePostScreen';
 import ViewPostScreen from './screens/ViewPostScreen';
 import CreateCommentScreen from './screens/CreateCommentScreen';
+import SyncScreen from './screens/SyncScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const App = () => (
   <DatabaseProvider database={database}>
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Sync" headerShown={false} component={SyncScreen} />
         <Stack.Screen
           name="Home"
           options={{title: 'Post list'}}
